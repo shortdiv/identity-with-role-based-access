@@ -26,7 +26,7 @@ export const actions = {
       commit("TOGGLE_IDENTITY_MODAL");
     });
     netlifyIdentity.on("login", user => {
-      axios.get("./netlify/functions/super-special-function").then(result => {
+      axios.get("/.netlify/functions/super-special-function").then(result => {
         console.log("this is a user ", user);
         console.log("this is the result", result);
       });
