@@ -1,3 +1,4 @@
+import axios from "axios";
 const netlifyIdentity = require("netlify-identity-widget");
 
 export const state = {
@@ -23,6 +24,12 @@ export const actions = {
     netlifyIdentity.open("signup"); // open the modal to the signup tab
     netlifyIdentity.on("close", function() {
       commit("TOGGLE_IDENTITY_MODAL");
+    });
+    netlifyIdentity.on("login", user => {
+      axios.get("./netlify/functions/super-special-function").then(result => {
+        console.log("this is a user ", user);
+        console.log("this is the result", result);
+      });
     });
     commit("TOGGLE_IDENTITY_MODAL");
   },
