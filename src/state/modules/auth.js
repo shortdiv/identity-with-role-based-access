@@ -26,10 +26,17 @@ export const actions = {
       commit("TOGGLE_IDENTITY_MODAL");
     });
     netlifyIdentity.on("login", user => {
-      axios.get("/.netlify/functions/super-special-function").then(result => {
-        console.log("this is a user ", user);
-        console.log("this is the result", result);
-      });
+      let config = {
+        headers: {
+          Authorization: "Bearer " + user.token.access_token
+        }
+      };
+      axios
+        .get("/.netlify/functions/super-special-function", config)
+        .then(result => {
+          console.log("this is a user ", user);
+          console.log("this is the result", result);
+        });
     });
     commit("TOGGLE_IDENTITY_MODAL");
   },
