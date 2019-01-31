@@ -1,8 +1,8 @@
 # Enable history pushstate with clean URLS in a SPA
 /*    /index.html   200
 
-# Gate function
-/.netlify/functions/super-special-function 200! Role=admin,editor
+#If role is correct run func
+/.netlify/functions/super-special-function /.netlify/functions/super-special-function 200! Role=admin,editor
 
-# else
-/* /index.html 302!
+#else
+/.netlify/functions/super-special-function /index.html 302!
