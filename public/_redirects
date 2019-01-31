@@ -2,7 +2,7 @@
 /*    /index.html   200
 
 #If role is correct run func
-/api/* /.netlify/functions/:splat 200! Role=admin,editor
+/.netlify/functions/super-special-function* /.netlify/functions/super-special-function/:splat 200! Role=admin,editor
 
 #else
-/api/* /index.html 302!
+/.netlify/functions/super-special-function /index.html 302!
