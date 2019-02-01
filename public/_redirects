@@ -1,9 +1,3 @@
 # Enable history pushstate with clean URLS in a SPA
 /protected /protected.html 200! Role=admin,editor
-/*    /index.html   200
-
-#If role is correct run func
-/.netlify/functions/super-special-function* /.netlify/functions/super-special-function/:splat 200! Role=admin,editor
-
-#else
-/.netlify/functions/super-special-function* /index.html 302!
+/*    /index.html   302!
