@@ -1,4 +1,5 @@
 # Enable history pushstate with clean URLS in a SPA
+/protected /protected.html 200! Role=admin,editor
 /*    /index.html   200
 
 #If role is correct run func
