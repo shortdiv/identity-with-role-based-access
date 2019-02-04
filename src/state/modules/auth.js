@@ -32,9 +32,11 @@ export const actions = {
         }
       };
       axios
-        .post("/api/super-special-function", {
+        .get("/api/super-special-function", {
           config,
-          userData
+          params: {
+            userData
+          }
         })
         .then(result => {
           console.log("this is a user ", userData);
