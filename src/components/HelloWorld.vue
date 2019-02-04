@@ -4,6 +4,7 @@
     <h3>Ecosystem</h3>
     <div ref="authModal" id="auth--modal"></div>
     <SidePanel />
+    <a href="https://identity-gated-site.netlify.com/"></a>
   </div>
 </template>
 
