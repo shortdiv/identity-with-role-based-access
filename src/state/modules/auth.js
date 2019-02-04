@@ -28,11 +28,11 @@ export const actions = {
     netlifyIdentity.on("login", userData => {
       let config = {
         headers: {
-          Authorization: "Bearer " + userData.token.access_token
+          Authorization: `Bearer ${userData.token.access_token}`
         }
       };
       axios
-        .post("/.netlify/functions/super-special-function", {
+        .post("/api/super-special-function", {
           config,
           userData
         })
