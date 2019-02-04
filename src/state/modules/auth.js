@@ -33,10 +33,7 @@ export const actions = {
       };
       axios
         .get("/api/super-special-function", {
-          config,
-          params: {
-            userData
-          }
+          config
         })
         .then(result => {
           console.log("this is a user ", userData);
