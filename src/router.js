@@ -25,9 +25,7 @@ export default new Router({
     {
       path: "/api",
       name: "api",
-      component: () => {
-        import("./views/Api.vue");
-      }
+      component: () => import(/* webpackChunkName: "about" */ "./views/Api.vue")
     }
   ]
 });
