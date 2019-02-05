@@ -15,10 +15,10 @@ exports.handler = function(event, context, callback) {
   console.log("context ", context);
 
   const validateUser = user => {
-    if (user === undefined) {
-      return ["visitor"];
-    } else if (user.email.split("@")[1] === "netlify.com") {
-      return ["editor"];
+    if (user !== undefined) {
+      if (user.email.split("@")[1] === "netlify.com") {
+        return ["editor"];
+      }
     } else {
       return ["visitor"];
     }
