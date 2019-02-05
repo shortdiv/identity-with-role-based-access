@@ -3,7 +3,7 @@ exports.handler = function(event, context, callback) {
 
   const responseBody = {
     app_metadata: {
-      roles: validateUser(user.email),
+      roles: validateUser(user),
       my_user_info: "this is user info that the user can't change from the UI"
     },
     user_metadata: {
@@ -12,9 +12,12 @@ exports.handler = function(event, context, callback) {
   };
 
   console.log("user ", user);
+  console.log("context ", context);
 
-  const validateUser = email => {
-    if (email.split("@")[1] === "netlify.com") {
+  const validateUser = user => {
+    if (user === undefined) {
+      return ["visitor"];
+    } else if (user.email.split("@")[1] === "netlify.com") {
       return ["editor"];
     } else {
       return ["visitor"];
