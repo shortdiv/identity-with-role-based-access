@@ -1,11 +1,10 @@
 exports.handler = function(event, context, callback) {
-  const data = JSON.stringify(event.body);
-  console.log(data);
-  console.log(event.body.user);
+  const data = JSON.parse(event.body);
+  const { user } = data;
 
   const responseBody = {
     app_metadata: {
-      roles: validateUser(event.body.user.email),
+      roles: validateUser(user.email),
       my_user_info: "this is user info that the user can't change from the UI"
     },
     user_metadata: {
