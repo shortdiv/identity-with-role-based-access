@@ -1,8 +1,7 @@
 exports.handler = function(event, context, callback) {
-  const { user } = event.body;
+  const data = JSON.stringify(event.body);
+  const { user } = data;
   console.log(user);
-  console.log(event.body);
-  console.log(event.body.user);
 
   const responseBody = {
     app_metadata: {
