@@ -2,6 +2,7 @@ exports.handler = function(event, context, callback) {
   console.log(context);
   console.log(context.clientContext);
   // const { user } = context.clientContext;
+  console.log(event.body);
 
   const responseBody = {
     app_metadata: {
