@@ -3,6 +3,7 @@ exports.handler = function(event, context, callback) {
   const { user } = data;
 
   console.log(user.email);
+  console.log("identity yourself", context.clientContext.identity);
 
   const validateUser = email => {
     if (email.split("@")[1] === "netlify.com") {
