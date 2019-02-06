@@ -28,9 +28,8 @@ export const actions = {
     netlifyIdentity.on("close", function() {
       commit("TOGGLE_IDENTITY_MODAL");
     });
-    netlifyIdentity.on("init", user => {
-      console.log("this is a user", user);
-    });
+    netlifyIdentity.on("init", user => console.log("init", user));
+    netlifyIdentity.on("open", user => console.log("open", user));
     netlifyIdentity.on("login", userData => {
       let config = {
         headers: {
