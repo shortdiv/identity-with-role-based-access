@@ -4,6 +4,14 @@ exports.handler = function(event, context, callback) {
 
   console.log(user.email);
 
+  const validateUser = email => {
+    if (email.split("@")[1] === "netlify.com") {
+      return ["editor"];
+    } else {
+      return ["visitor"];
+    }
+  };
+
   const roles = validateUser(user.email);
 
   const responseBody = {
@@ -13,14 +21,6 @@ exports.handler = function(event, context, callback) {
     },
     user_metadata: {
       custom_data_from_function: "hurray this is some extra metadata"
-    }
-  };
-
-  const validateUser = email => {
-    if (email.split("@")[1] === "netlify.com") {
-      return ["editor"];
-    } else {
-      return ["visitor"];
     }
   };
 
