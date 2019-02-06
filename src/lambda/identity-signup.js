@@ -20,6 +20,7 @@ exports.handler = function(event, context, callback) {
       my_user_info: "this is user info that the user can't change from the UI"
     },
     user_metadata: {
+      ...user.user_metadata,
       custom_data_from_function: "hurray this is some extra metadata"
     }
   };
