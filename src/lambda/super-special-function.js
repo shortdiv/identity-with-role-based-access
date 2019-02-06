@@ -1,20 +1,31 @@
-const cookie = require("cookie");
+import axios from "axios";
 
 export function handler(event, context, callback) {
-  const { headers } = event;
-  const { user, identity } = context.clientContext;
-  console.log("this is a user   ", user);
-  console.log("id ", identity);
-  // const parsedBody = JSON.parse(event.body);
-  // const { params } = parsedBody;
-  // const userData = params.userData;
-  const cookieHeader = headers.cookie || "";
-  const cookies = cookie.parse(cookieHeader);
-  console.log("I AM COOKIE", cookies);
-  // console.log("userData", userData.app_metadata.roles);
+  const { email, full_name } = JSON.parse(event.body);
+  const { identity } = context.clientContext;
+  const referer = event.headers.referer;
+
+  console.log("this is a magical referer", referer);
+
+  console.log(email);
+  console.log(full_name);
+
+  const config = {
+    headers: {
+      Bearer: `Authorization ${identity.token}`
+    }
+  };
+  const postData = {
+    email: "divified@gmail.com",
+    password: "password",
+    full_name: "Robot Div"
+  };
+  axios.post("/.netlify/indentity/admin/users", postData, config).then(res => {
+    console.log(res);
+  });
 
   callback(null, {
     statusCode: 200,
-    body: JSON.stringify({ msg: "Hello, this is a super secret function!" })
+    body: JSON.stringify({ msg: "Hello, this is a super secret message!" })
   });
 }
