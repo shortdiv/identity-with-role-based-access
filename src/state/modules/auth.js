@@ -41,8 +41,9 @@ export const actions = {
           config
         })
         .then(result => {
-          console.log(result);
-          commit("SUPER_SPECIAL_FUNCTION_INVOKED", true);
+          if (result.data.msg) {
+            commit("SUPER_SPECIAL_FUNCTION_INVOKED", true);
+          }
         });
     });
     netlifyIdentity.on("logout", () => {
