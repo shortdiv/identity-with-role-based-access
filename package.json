@@ -6,7 +6,7 @@
     "serve": "vue-cli-service serve",
     "serve:functions": "netlify-lambda serve functions",
     "build": "npm-run-all --parallel build:**",
-    "build:app": "vue-cli-service build",
+    "build:app": "vue-cli-service build --mode development",
     "build:functions": "netlify-lambda build src/lambda",
     "lint": "vue-cli-service lint"
   },

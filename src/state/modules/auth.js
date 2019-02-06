@@ -3,12 +3,16 @@ const netlifyIdentity = require("netlify-identity-widget");
 
 export const state = {
   token: "",
-  isIdentityModalOpen: false
+  isIdentityModalOpen: false,
+  isSpecial: false
 };
 
 export const mutations = {
   TOGGLE_IDENTITY_MODAL(state) {
     state.isIdentityModalOpen = !state.isIdentityModalOpen;
+  },
+  SUPER_SPECIAL_FUNCTION_INVOKED(state, val) {
+    state.isSpecial = val;
   }
 };
 
@@ -16,7 +20,6 @@ export const getters = {};
 
 export const actions = {
   initializeIdentity({ commit }, val) {
-    debugger;
     netlifyIdentity.init({
       container: val
     });
@@ -36,9 +39,12 @@ export const actions = {
           config
         })
         .then(result => {
-          console.log("this is a user ", userData);
-          console.log("this is the result", result);
+          console.log(result);
+          commit("SUPER_SPECIAL_FUNCTION_INVOKED", true);
         });
+    });
+    netlifyIdentity.on("logout", () => {
+      commit("SUPER_SPECIAL_FUNCTION_INVOKED", false);
     });
     commit("TOGGLE_IDENTITY_MODAL");
   },
