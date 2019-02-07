@@ -1,33 +1,41 @@
 const axios = require("axios");
 
-export function handler(event, context, callback) {
+export function handler(event, context) {
   console.log("HELLO THERE");
   console.log(event.body);
   const { identity } = context.clientContext;
 
-  const referer = event.headers.referer;
+  console.log("I am an identity", identity.token);
 
-  console.log("this is a magical referer", referer);
+  const generatePost = async function() {
+    const config = {
+      headers: {
+        Bearer: `Authorization ${identity.token}`
+      }
+    };
+    const postData = {
+      email: "divified@gmail.com",
+      password: "password",
+      confirm: true,
+      app_metadata: {
+        roles: ["editor"]
+      },
+      user_metadata: {
+        full_name: "Robot Div"
+      }
+    };
 
-  const config = {
-    headers: {
-      Bearer: `Authorization ${identity.token}`
+    try {
+      const resp = await axios.post(
+        "/.netlify/indentity/admin/users",
+        JSON.stringify(postData),
+        config
+      );
+      console.log(resp);
+    } catch (err) {
+      console.log("I AM AN ERROR");
     }
   };
-  const postData = {
-    email: "divified@gmail.com",
-    password: "password",
-    full_name: "Robot Div"
-  };
-  axios
-    .post("/.netlify/indentity/admin/users", postData, config)
-    .then(() => {
-      console.log("did this work?");
-    })
-    .catch(err => console.log("thisis an error", err));
 
-  callback(null, {
-    statusCode: 200,
-    body: JSON.stringify({ msg: "Hello, this is a super secret message!" })
-  });
+  return generatePost();
 }
