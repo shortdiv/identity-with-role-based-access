@@ -11,7 +11,13 @@ export function handler(event, context) {
     });
   };
 
-  console.log(users);
+  users()
+    .then(res => {
+      console.log(res);
+    })
+    .catch(err => {
+      console.log("ERRORERER ", err);
+    });
 
   const data = {
     email: "divified@gmail.com",
