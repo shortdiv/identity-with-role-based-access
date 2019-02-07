@@ -36,18 +36,18 @@ export function handler(event, context) {
   //     console.log("I AM AN ERROR", err);
   //   }
   // };
-
+  const data = {
+    email: "divified@gmail.com",
+    password: "qwerty",
+    confirm: true,
+    user_metadata: {
+      full_name: "ROBOT DIV"
+    }
+  };
   return axios({
     method: "POST",
     url: `${identity.url}/admin/users`,
     headers: { Authorization: `Bearer ${identity.token}` },
-    data: JSON.stringify({
-      email: "divified@gmail.com",
-      password: "iampassword",
-      confirm: true,
-      user_metadata: {
-        full_name: "Roboto Div"
-      }
-    })
+    data: JSON.stringify(data)
   });
 }
