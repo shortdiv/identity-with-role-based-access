@@ -1,6 +1,7 @@
 const axios = require("axios");
 
 export function handler(event, context, callback) {
+  console.log("HELLO THERE");
   console.log(event.body);
   const { identity } = context.clientContext;
   console.log(identity);
@@ -18,15 +19,12 @@ export function handler(event, context, callback) {
     password: "password",
     full_name: "Robot Div"
   };
-  try {
-    axios
-      .post("/.netlify/indentity/admin/users", postData, config)
-      .then(res => {
-        console.log(res);
-      });
-  } catch (err) {
-    console.log(err);
-  }
+  axios
+    .post("/.netlify/indentity/admin/users", postData, config)
+    .then(res => {
+      console.log(res);
+    })
+    .catch(err => console.log(err));
 
   callback(null, {
     statusCode: 200,
