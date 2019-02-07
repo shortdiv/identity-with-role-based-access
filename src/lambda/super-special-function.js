@@ -27,13 +27,13 @@ export function handler(event, context) {
 
     try {
       const resp = await axios.post(
-        "/.netlify/indentity/admin/users",
+        "/.netlify/identity/admin/users",
         JSON.stringify(postData),
         config
       );
       console.log(resp);
     } catch (err) {
-      console.log("I AM AN ERROR");
+      console.log("I AM AN ERROR", err);
     }
   };
 
