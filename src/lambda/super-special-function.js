@@ -21,10 +21,10 @@ export function handler(event, context, callback) {
   };
   axios
     .post("/.netlify/indentity/admin/users", postData, config)
-    .then(res => {
-      console.log(res);
+    .then(() => {
+      console.log("did this work?");
     })
-    .catch(err => console.log(err));
+    .catch(err => console.log("thisis an error", err));
 
   callback(null, {
     statusCode: 200,
