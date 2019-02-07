@@ -18,12 +18,15 @@ export function handler(event, context, callback) {
     password: "password",
     full_name: "Robot Div"
   };
-  axios
-    .post("/.netlify/indentity/admin/users", postData, config)
-    .then(res => {
-      console.log(res);
-    })
-    .catch(err => console.log(err));
+  try {
+    axios
+      .post("/.netlify/indentity/admin/users", postData, config)
+      .then(res => {
+        console.log(res);
+      });
+  } catch (err) {
+    console.log(err);
+  }
 
   callback(null, {
     statusCode: 200,
