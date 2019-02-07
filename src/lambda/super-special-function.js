@@ -1,14 +1,13 @@
 import axios from "axios";
 
 export function handler(event, context, callback) {
-  const { email, full_name } = JSON.parse(event.body);
+  const data = JSON.parse(event.body);
+  console.log(data);
   const { identity } = context.clientContext;
+  console.log(identity);
   const referer = event.headers.referer;
 
   console.log("this is a magical referer", referer);
-
-  console.log(email);
-  console.log(full_name);
 
   const config = {
     headers: {
