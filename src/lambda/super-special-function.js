@@ -4,7 +4,7 @@ export function handler(event, context, callback) {
   console.log("HELLO THERE");
   console.log(event.body);
   const { identity } = context.clientContext;
-  console.log(identity);
+
   const referer = event.headers.referer;
 
   console.log("this is a magical referer", referer);
