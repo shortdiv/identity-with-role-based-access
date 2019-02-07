@@ -24,7 +24,7 @@ export function handler(event, context) {
     password: "qwerty",
     confirm: true,
     app_metadata: {
-      roles: ["editor"]
+      roles: ["superstar"]
     },
     user_metadata: {
       full_name: "Robot Div"
