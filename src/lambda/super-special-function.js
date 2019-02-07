@@ -1,6 +1,5 @@
 export function handler(event, context, callback) {
-  const data = JSON.parse(event.body);
-  console.log(data);
+  console.log(event.body);
   const { identity } = context.clientContext;
   console.log(identity);
   const referer = event.headers.referer;
