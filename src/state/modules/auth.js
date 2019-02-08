@@ -47,6 +47,7 @@ export const actions = {
             commit("SUPER_SPECIAL_FUNCTION_INVOKED", true);
           }
         });
+      commit("user/SET_USER", userData);
     });
     netlifyIdentity.on("logout", () => {
       commit("SUPER_SPECIAL_FUNCTION_INVOKED", false);
