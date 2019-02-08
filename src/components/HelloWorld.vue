@@ -4,14 +4,13 @@
     <h3>Ecosystem</h3>
     <div ref="authModal" id="auth--modal"></div>
     <SidePanel />
-    <button @click="triggerFunction">This is a button</button>
+    <button @click="getUserData">Get User Data</button>
   </div>
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapState, mapActions } from "vuex";
 import SidePanel from "./SidePanel.vue";
-import axios from "axios";
 
 export default {
   name: "HelloWorld",
@@ -24,15 +23,14 @@ export default {
   mounted() {
     this.initializeIdentity("#auth--modal");
   },
+  computed: {
+    ...mapState("user", {
+      user: state => state.user
+    })
+  },
   methods: {
     ...mapActions("auth", ["initializeIdentity"]),
-    triggerFunction() {
-      console.log("hi");
-      axios({
-        method: "GET",
-        url: "/.netlify/functions/hello"
-      });
-    }
+    ...mapActions("user", ["getUserData"])
   }
 };
 </script>
