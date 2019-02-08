@@ -4,16 +4,14 @@
     <h3>Ecosystem</h3>
     <div ref="authModal" id="auth--modal"></div>
     <SidePanel />
-    <a
-      href="https://identity-gated-site.netlify.com/.netlify/functions/set-cookie"
-      >This is a link</a
-    >
+    <button @click="triggerFunction">This is a button</button>
   </div>
 </template>
 
 <script>
 import { mapActions } from "vuex";
 import SidePanel from "./SidePanel.vue";
+import axios from "axios";
 
 export default {
   name: "HelloWorld",
@@ -27,7 +25,14 @@ export default {
     this.initializeIdentity("#auth--modal");
   },
   methods: {
-    ...mapActions("auth", ["initializeIdentity"])
+    ...mapActions("auth", ["initializeIdentity"]),
+    triggerFunction() {
+      console.log("hi");
+      axios({
+        method: "GET",
+        url: "/.netlify/functions/hello"
+      });
+    }
   }
 };
 </script>
