@@ -36,6 +36,7 @@ export const actions = {
           Authorization: `Bearer ${userData.token.access_token}`
         }
       };
+      console.log("/api/super-special-function");
       axios
         .post({
           url: "/api/super-special-function",
@@ -47,7 +48,6 @@ export const actions = {
             commit("SUPER_SPECIAL_FUNCTION_INVOKED", true);
           }
         });
-      commit("user/SET_USER", userData, { root: true });
     });
     netlifyIdentity.on("logout", () => {
       commit("SUPER_SPECIAL_FUNCTION_INVOKED", false);
