@@ -1,8 +1,2 @@
-#If role is correct run func
-/api/* /.netlify/functions/:splat 200! Role=admin,editor
-
-#else
-/api/* /index.html 302!
-
 # Enable history pushstate with clean URLS in a SPA
 /*    /index.html   200

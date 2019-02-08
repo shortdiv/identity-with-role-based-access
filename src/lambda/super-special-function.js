@@ -3,6 +3,11 @@ const axios = require("axios");
 export function handler(event, context) {
   const { identity } = context.clientContext;
 
+  console.log("IDENT", identity);
+  console.log(context.clientContext.user);
+
+  console.log("EVENT", event.body);
+
   const users = () => {
     return axios({
       method: "GET",
