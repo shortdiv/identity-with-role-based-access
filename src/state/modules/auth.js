@@ -37,8 +37,9 @@ export const actions = {
         }
       };
       axios
-        .post("/api/super-special-function", {
-          userData,
+        .post({
+          url: "/api/super-special-function",
+          data: userData,
           config
         })
         .then(result => {
