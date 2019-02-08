@@ -29,6 +29,7 @@ export function handler(event, context) {
     email: "divified@gmail.com",
     password: "qwerty",
     confirm: true,
+    role: "superstar",
     app_metadata: {
       roles: ["superstar"]
     },
