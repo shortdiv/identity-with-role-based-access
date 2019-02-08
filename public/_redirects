@@ -1,2 +1,5 @@
+#If role is correct run func
+/api/* /.netlify/functions/:splat 200
+
 # Enable history pushstate with clean URLS in a SPA
 /*    /index.html   200
