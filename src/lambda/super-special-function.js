@@ -7,7 +7,7 @@ export function handler(event, context) {
   console.log(context.clientContext.user);
 
   const dataBody = JSON.parse(event.body);
-  console.log("EVENT", dataBody.app_metadata.roles);
+  console.log("EVENT", dataBody.userData.app_metadata.roles);
 
   const users = () => {
     return axios({
