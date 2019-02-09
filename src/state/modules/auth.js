@@ -36,16 +36,17 @@ export const actions = {
           Authorization: `Bearer ${userData.token.access_token}`
         }
       };
-      axios({
-        url: "/api/super-special-function",
-        method: "POST",
-        data: userData,
-        config
-      }).then(result => {
-        if (result.data.msg) {
-          commit("SUPER_SPECIAL_FUNCTION_INVOKED", true);
-        }
-      });
+      axios
+        .post({
+          url: "/api/super-special-function",
+          data: userData,
+          config
+        })
+        .then(result => {
+          if (result.data.msg) {
+            commit("SUPER_SPECIAL_FUNCTION_INVOKED", true);
+          }
+        });
       commit("user/SET_USER", userData, { root: true });
     });
     netlifyIdentity.on("logout", () => {
