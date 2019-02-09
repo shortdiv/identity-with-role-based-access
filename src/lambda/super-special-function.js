@@ -1,12 +1,11 @@
 const axios = require("axios");
 
 export function handler(event, context, callback) {
-  console.log("context   ", context.clientContext);
   const referer = event.headers.referer;
   const { userData } = JSON.parse(event.body);
+  const { identity } = context.clientContext;
 
   const roles = userData.app_metadata.roles;
-  const token = userData.token.access_token;
 
   //check roles!
   if (roles.indexOf("editor")) {
@@ -20,7 +19,7 @@ export function handler(event, context, callback) {
 
     return axios({
       url: `/.identity/admin/users/${userData.id}`,
-      headers: { Authorization: `Bearer ${token}` },
+      headers: { Authorization: `Bearer ${identity.token}` },
       method: "PUT",
       body: JSON.stringify(attrs)
     });
