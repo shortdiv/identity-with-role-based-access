@@ -3,6 +3,8 @@ const axios = require("axios");
 export function handler(event, context, callback) {
   const referer = event.headers.referer;
   const { userData } = JSON.parse(event.body);
+  console.log(userData);
+  console.log("event", event.body);
   const { identity } = context.clientContext;
 
   const roles = userData.app_metadata.roles;
