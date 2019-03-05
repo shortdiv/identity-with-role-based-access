@@ -1,4 +1,3 @@
-import axios from "axios";
 const netlifyIdentity = require("netlify-identity-widget");
 
 export const state = {
@@ -30,23 +29,23 @@ export const actions = {
     });
     netlifyIdentity.on("init", user => console.log("init", user));
     netlifyIdentity.on("open", user => console.log("open", user));
-    netlifyIdentity.on("login", userData => {
-      let config = {
-        headers: {
-          Authorization: `Bearer ${userData.token.access_token}`
-        }
-      };
-      axios({
-        url: "/api/super-special-function",
-        method: "POST",
-        userData,
-        config
-      }).then(result => {
-        if (result.data.msg) {
-          commit("SUPER_SPECIAL_FUNCTION_INVOKED", true);
-        }
-      });
-      commit("user/SET_USER", userData, { root: true });
+    netlifyIdentity.on("login", () => {
+      // let config = {
+      //   headers: {
+      //     Authorization: `Bearer ${userData.token.access_token}`
+      //   }
+      // };
+      // axios({
+      //   url: "/api/super-special-function",
+      //   method: "POST",
+      //   userData,
+      //   config
+      // }).then(result => {
+      //   if (result.data.msg) {
+      //     commit("SUPER_SPECIAL_FUNCTION_INVOKED", true);
+      //   }
+      // });
+      // commit("user/SET_USER", userData, { root: true });
     });
     netlifyIdentity.on("logout", () => {
       commit("SUPER_SPECIAL_FUNCTION_INVOKED", false);
