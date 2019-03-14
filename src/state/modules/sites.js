@@ -16,7 +16,7 @@ export const actions = {
   lockSite({ commit }) {
     //set some redirect rule//
     axios({
-      url: `./functions/lock-site`,
+      url: `/.netlify/functions/lock-site`,
       headers: { Authorization: `Bearer ${process.env.VUE_APP_ACCESS_TOKEN}` },
       method: "PUT",
       data: {
