@@ -5,6 +5,7 @@
     <div ref="authModal" id="auth--modal"></div>
     <SidePanel />
     <button @click="getUserData">Get User Data</button>
+    <button @click="lockSite">Lock Site</button>
   </div>
 </template>
 
@@ -30,7 +31,8 @@ export default {
   },
   methods: {
     ...mapActions("auth", ["initializeIdentity"]),
-    ...mapActions("user", ["getUserData"])
+    ...mapActions("user", ["getUserData"]),
+    ...mapActions("sites", ["lockSite"])
   }
 };
 </script>
