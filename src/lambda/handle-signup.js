@@ -26,6 +26,9 @@ exports.handler = function(event, context, callback) {
     }
   };
 
+  console.log(responseBody)
+  console.log(roles)
+
   callback(null, {
     statusCode: 200,
     body: JSON.stringify(responseBody)
